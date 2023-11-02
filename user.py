@@ -7,12 +7,14 @@ BOT_USERNAME=Config.BOT_USERNAME
 class User(Client):
     def __init__(self):
         super().__init__(
-            Config.SESSION,
+            name="user_session",
             api_hash=Config.API_HASH,
             api_id=Config.API_ID,
+            session_string=Config.SESSION,
             workers=10
         )
         self.LOGGER = LOGGER
+        self.storage.session_string=Config.SESSION
 
     async def start(self):
         await super().start()
